@@ -16,7 +16,8 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Dakujem\\Tiny\\": "src/"
+			"Dakujem\\Tiny\\": "src/",
+			"Dakujem\\Tiny\\Test": "tests/"
 		}
 	}
 }
