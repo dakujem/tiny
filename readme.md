@@ -3,6 +3,10 @@
 
 A loose and tiny toolkit for modeling application entities.
 
+> :bulb:
+>
+> Note: This is just a draft of such a toolkit / thoughts on the topic
+
 
 ### Reference
 
@@ -35,8 +39,8 @@ $someData = $entity->collection[4];
 $collection = $entity->collection;
 $entity->collection = $collection;
 
-$relative = $entity->relatedObject->deref();
 $ref = $entity->relatedObject;
+$relative = $entity->relatedObject->deref();
 $entity->relatedObject = 4; // treat as ID
 $entity->relatedObject = $relative;
 $entity->relatedObject = $ref;
@@ -55,3 +59,9 @@ $entity->getChanges();
 $entity->isChanged();
 
 ```
+
+
+## Other thoughts
+
+- ability to automatically dereference (should be optional) on method call or member access, so no need to call `$post->author->deref()->getAge()`, instead `$post->author->getAge()` should be possible if desired
+
