@@ -65,3 +65,8 @@ $entity->isChanged();
 
 - ability to automatically dereference (should be optional) on method call or member access, so no need to call `$post->author->deref()->getAge()`, instead `$post->author->getAge()` should be possible if desired
 
+To consider:
+- changes-tracking and other "reactions to change" implemented via observer pattern
+	- attachable observers (objects/callables)
+	- it would mean forcing all entity attribute access via setter/getter methods (or magic getters/setters)
+	- everything else that is not data should be placed in internal `_meta` attribute
