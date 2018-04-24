@@ -5,6 +5,8 @@ namespace Dakujem\Tiny\Test\Mock;
 
 use Tiny\CollectionReference,
 	Tiny\CollectionReferenceInterface,
+	Tiny\EntityInterface,
+	Tiny\MutableReferenceInterface,
 	Tiny\Reference,
 	Tiny\ReferenceInterface;
 
@@ -17,6 +19,7 @@ use Tiny\CollectionReference,
  */
 class User
 {
+
 	/**
 	 * @var CollectionReferenceInterface
 	 */
@@ -47,14 +50,19 @@ class User
 			if (property_exists($this, $name)) {
 				if ($this->$name instanceof ReferenceInterface) {
 					$ref = $this->$name;
-					if ($ref instanceof \Tiny\MutableReferenceInterface) {
+					if ($ref instanceof MutableReferenceInterface) {
 						if ($ref->accepts($val)) {
 							$ref->referTo($val);
 						} else {
-							// ??
+							// ?? throw exception
 						}
+					} elseif ($val instanceof EntityInterface && $val->type() === $ref->type()) {
+						// pseudo-assign when types match
+						$this->$name = new Reference($val->id(), $val->type(), function() use ($val) {
+							return $val;
+						});
 					} else {
-						// ??
+						// ?? pseudo-assign as above or throw exception ?
 					}
 				} else {
 					call_user_func([$this, 'set' . ucfirst($name)], $val);

@@ -70,3 +70,7 @@ To consider:
 	- attachable observers (objects/callables)
 	- it would mean forcing all entity attribute access via setter/getter methods (or magic getters/setters)
 	- everything else that is not data should be placed in internal `_meta` attribute
+- `ReferenceInterface` to extend `EntityInterface` ??
+- reference getter validators (string classname or function, can be string "is_scalar")
+	- must return true/false
+	- to ensure the dereferencer getter returns valid/expected type
