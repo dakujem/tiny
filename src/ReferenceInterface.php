@@ -31,10 +31,12 @@ interface ReferenceInterface
 	 */
 	function deref();
 
-
-	/**
-	 * Has the reference been loaded, has it been dereferenced?
-	 */
-	function loaded(): bool;
+//
+// Note: it should be implementation detail to mark a reference "loaded" and so optimize the deref() call
+//
+//	/**
+//	 * Has the reference been loaded, has it been dereferenced?
+//	 */
+//	function loaded(): bool;
 
 }
