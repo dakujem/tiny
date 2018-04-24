@@ -11,10 +11,10 @@ use ArrayIterator;
  *
  *
  * @author Andrej Rypák (dakujem) <xrypak@gmail.com>
- * @copyright Via Aurea, s.r.o.
  */
 class CollectionReference implements CollectionReferenceInterface
 {
+
 	private $id = NULL;
 	private $type = NULL;
 
@@ -52,9 +52,9 @@ class CollectionReference implements CollectionReferenceInterface
 	}
 
 
-	public function loaded()
+	public function loaded(): bool
 	{
-		return !!$this->loaded;
+		return $this->loaded;
 	}
 
 

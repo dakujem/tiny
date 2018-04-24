@@ -9,7 +9,6 @@ namespace Tiny;
  *
  *
  * @author Andrej Rypák (dakujem) <xrypak@gmail.com>
- * @copyright Via Aurea, s.r.o.
  */
 interface ReferenceInterface
 {
@@ -36,6 +35,6 @@ interface ReferenceInterface
 	/**
 	 * Has the reference been loaded, has it been dereferenced?
 	 */
-	function loaded();
+	function loaded(): bool;
 
 }

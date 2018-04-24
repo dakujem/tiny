@@ -9,10 +9,10 @@ namespace Tiny;
  *
  *
  * @author Andrej Rypák (dakujem) <xrypak@gmail.com>
- * @copyright Via Aurea, s.r.o.
  */
 class Reference implements ReferenceInterface
 {
+
 	private $id = NULL;
 	private $type = NULL;
 	private $data = NULL;
@@ -46,9 +46,9 @@ class Reference implements ReferenceInterface
 	}
 
 
-	public function loaded()
+	public function loaded(): bool
 	{
-		return !!$this->loaded;
+		return $this->loaded;
 	}
 
 
