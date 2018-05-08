@@ -12,19 +12,35 @@ namespace Tiny;
  */
 class Reference implements ReferenceInterface
 {
+	private $id = null;
+	private $type = null;
+	private $data = null;
+	private $getter = null;
+	private $loaded = false;
 
-	private $id = NULL;
-	private $type = NULL;
-	private $data = NULL;
-	private $getter = NULL;
-	private $loaded = FALSE;
 
-
-	public function __construct($id, $type, $getter)
+	/**
+	 * Usage:
+	 *
+	 * new Reference({id}, {type}, {getter});
+	 * new Reference({entity});
+	 *
+	 * @param int|string|EntityInterface $id
+	 * @param string $type
+	 * @param callable $getter
+	 */
+	public function __construct($id, $type = NULL, $getter = NULL)
 	{
-		$this->id = $id;
-		$this->type = $type;
-		$this->getter = $getter;
+		if ($id instanceof EntityInterface) {
+			$this->id = $id->getId();
+			$this->type = $id->getType();
+			$this->data = $id;
+			$this->loaded = true;
+		} else {
+			$this->id = $id;
+			$this->type = $type;
+			$this->getter = $getter;
+		}
 	}
 
 
@@ -54,7 +70,7 @@ class Reference implements ReferenceInterface
 
 	private function load()
 	{
-		$this->loaded = TRUE;
+		$this->loaded = true;
 		return $this->data = call_user_func($this->getter, $this);
 	}
 
