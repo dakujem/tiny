@@ -14,14 +14,14 @@ use Tracy\Debugger,
 Environment::setup();
 
 // debugging
-Debugger::$strictMode = TRUE;
+Debugger::$strictMode = true;
 Debugger::enable();
 Debugger::$maxDepth = 10;
 Debugger::$maxLen = 500;
 
 
 // dump shortcut
-function dump($var, $return = FALSE)
+function dump($var, $return = false)
 {
 	return Debugger::dump($var, $return);
 }

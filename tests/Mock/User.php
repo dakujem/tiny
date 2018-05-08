@@ -3,12 +3,15 @@
 
 namespace Dakujem\Tiny\Test\Mock;
 
-use Tiny\CollectionReference,
+use Exception,
+	Tiny\CollectionReference,
 	Tiny\CollectionReferenceInterface,
 	Tiny\EntityInterface,
+	Tiny\Hydratable,
 	Tiny\MutableReferenceInterface,
 	Tiny\Reference,
-	Tiny\ReferenceInterface;
+	Tiny\ReferenceInterface,
+	Tiny\Squeezable;
 
 
 /**
@@ -17,8 +20,12 @@ use Tiny\CollectionReference,
  *
  * @author Andrej Rypák (dakujem) <xrypak@gmail.com>
  */
-class User
+class User implements Hydratable, Squeezable, EntityInterface
 {
+	/**
+	 * @var int
+	 */
+	private $id;
 
 	/**
 	 * @var CollectionReferenceInterface
@@ -33,18 +40,30 @@ class User
 	/**
 	 * @var string
 	 */
-	private $name = NULL;
+	private $name = null;
 
 
 	public function __construct($attrs = [])
 	{
-		$this->orders = new CollectionReference(NULL, 'order');
-		$this->address = new Reference(NULL, 'address');
+		$this->orders = new CollectionReference(null, 'order');
+		$this->address = new Reference(null, 'address');
 		$this->hydrate($attrs);
 	}
 
 
-	public function hydrate($attrs = [])
+	public function id()
+	{
+		return $this->id;
+	}
+
+
+	public function type()
+	{
+		return 'user';
+	}
+
+
+	public function hydrate(iterable $attrs)
 	{
 		foreach ($attrs as $name => $val) {
 			if (property_exists($this, $name)) {
@@ -69,6 +88,12 @@ class User
 				}
 			}
 		}
+	}
+
+
+	public function squeeze(): iterable
+	{
+		throw new Exception('TODO');
 	}
 
 

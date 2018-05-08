@@ -8,7 +8,7 @@
 		}
 	],
 	"require": {
-		"php": "^7.0"
+		"php": "^7.1"
 	},
 	"require-dev": {
 		"nette/tester": "~1.4.0",
@@ -17,7 +17,7 @@
 	"autoload": {
 		"psr-4": {
 			"Dakujem\\Tiny\\": "src/",
-			"Dakujem\\Tiny\\Test": "tests/"
+			"Dakujem\\Tiny\\Test\\": "tests/"
 		}
 	}
 }
