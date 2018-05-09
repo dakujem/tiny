@@ -5,12 +5,26 @@ A loose and tiny toolkit for modeling application entities.
 
 > :bulb:
 >
-> Note: This is just a draft of such a toolkit / thoughts on the topic
+> Note: This is currenty just a draft of such a toolkit / thoughts on the topic
+
+The idea is to conform to Uncle Bob's **Clean Architecture** without sacrificing the ease of use of an ORM.
+
+Simply put, to fetch a related entity,
+the current entity must not be required to know anything about *how* the related entity should be fetched.
+In fact, it should not even care.
+
+As a result, the underlying implementation of storage or data retrieval can change
+without the need to modify anything in the application's internal (business) logic
+and the entities can be used across multiplne application layers without breaking the *dependency rule*.
+
+
+## Implementation
 
 
 ### Reference
 
 - `deref()` should be implemented using a customisable callback
+
 
 ### CollectionReference
 
