@@ -1,6 +1,6 @@
 {
 	"name": "dakujem/tiny",
-	"type": "library",
+	"description": "A loose toolkit for modeling application entities.",
 	"authors": [
 		{
 			"name": "Andrej Rypák",
@@ -10,13 +10,17 @@
 	"require": {
 		"php": "^7.1"
 	},
-	"require-dev": {
-		"nette/tester": "~1.4.0",
-		"tracy/tracy": "~2.3.0"
-	},
 	"autoload": {
 		"psr-4": {
-			"Dakujem\\Tiny\\": "src/",
+			"Dakujem\\Tiny\\": "src/"
+		}
+	},
+	"require-dev": {
+		"nette/tester": "^2",
+		"tracy/tracy": "^2.3"
+	},
+	"autoload-dev": {
+		"psr-4": {
 			"Dakujem\\Tiny\\Test\\": "tests/"
 		}
 	}
