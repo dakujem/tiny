@@ -88,3 +88,5 @@ To consider:
 - reference getter validators (string classname or function, can be string "is_scalar")
 	- must return true/false
 	- to ensure the dereferencer getter returns valid/expected type
+- N+1 problem
+	- eager loading vs. lazy loading
