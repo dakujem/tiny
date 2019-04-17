@@ -44,7 +44,6 @@ and the entities can be used across multiplne application layers without breakin
 What I want to be able to do:
 
 ```php
-
 $bar = $entity->foo;
 $entity->foo = $bar;
 
@@ -60,8 +59,9 @@ $entity->relatedObject = $relative;
 $entity->relatedObject = $ref;
 
 $relatives = $entity->relatedCollection->deref();
-$relative = $entity->relatedCollection[4]->deref();
-$entity->relatedCollection[4] = $relative;
+$relative = $entity->relatedCollection[4]->deref(); // shorthand for the below
+$relative = $entity->relatedCollection->deref()[4]->deref();  // this would be equivalent to the above ^
+$entity->relatedCollection[4] = $relative; // how about this one then?
 $collection = $entity->collection;
 $entity->relatedCollection = $relatives;
 $entity->relatedCollection[] = $relative;
@@ -72,7 +72,21 @@ $clone = $entity->clone()->resetId();
 $entity->getChanges();
 $entity->isChanged();
 
+// how about filtering?
+$relatives = $entity->relatedCollection->deref(new FilterObject);
+
+// how about intermediate caching?
+$entity->relatedCollection->deref();
 ```
+
+### EntityCollection
+
+Homogeneous.
+
+
+### EntityHeap
+
+A heap. A Pile. A stack. Heterogeneous.
 
 
 ## Other thoughts
